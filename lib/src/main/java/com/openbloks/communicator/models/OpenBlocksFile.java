@@ -1,4 +1,4 @@
-package com.openbloks.communicator;
+package com.openbloks.communicator.models;
 
 public class OpenBlocksFile {
     public byte[] data;

@@ -4,6 +4,8 @@ import android.view.View;
 
 import com.openbloks.communicator.exceptions.CompileException;
 import com.openbloks.communicator.exceptions.NotSupportedException;
+import com.openbloks.communicator.models.OpenBlocksFile;
+import com.openbloks.communicator.models.OpenBlocksRawProject;
 import com.openbloks.communicator.projectfiles.OpenBlocksCode;
 import com.openbloks.communicator.projectfiles.OpenBlocksLayout;
 
@@ -20,8 +22,8 @@ public interface OpenBlocksModule {
      */
     interface ProjectManager extends OpenBlocksModule {
         /* Self-explanatory */
-        void                saveProject(OpenBlocksRawProject project);
-        OpenBlocksRawProject getProject ();
+        void                    saveProject(OpenBlocksRawProject project);
+        OpenBlocksRawProject    getProject ();
 
         /*
          * exportProject() should export the provided project into a single file
@@ -36,7 +38,7 @@ public interface OpenBlocksModule {
          * @return The exported file
          * @throws NotSupportedException Throw this if you don't support this function
          */
-        OpenBlocksFile      exportProject(OpenBlocksRawProject project)    throws NotSupportedException;
+        OpenBlocksFile          exportProject(OpenBlocksRawProject project)     throws NotSupportedException;
 
         /**
          * This function is used to import a file / data that has been exported on exportProject
@@ -46,7 +48,7 @@ public interface OpenBlocksModule {
          * @return The imported project
          * @throws NotSupportedException Throw this if you don't support this function
          */
-        OpenBlocksRawProject importProject(OpenBlocksFile input)         throws NotSupportedException;
+        OpenBlocksRawProject    importProject(OpenBlocksFile input)             throws NotSupportedException;
 
         /**
          * This function is used to list every projects
@@ -77,6 +79,10 @@ public interface OpenBlocksModule {
         OpenBlocksCode      parseCode   (OpenBlocksRawProject project);
     }
 
+    /**
+     * ProjectLayoutGUI is used to display / edit the layout, this module should inflate a layout
+     * into the provided `View layout`
+     */
     interface ProjectLayoutGUI extends OpenBlocksModule {
         void show(View layout, OpenBlocksLayout layout_data);
     }
