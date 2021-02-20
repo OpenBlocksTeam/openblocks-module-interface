@@ -2,6 +2,8 @@ package com.openbloks.communicator;
 
 import android.view.View;
 
+import com.openbloks.communicator.callbacks.ProgressCallbacks;
+import com.openbloks.communicator.callbacks.SaveCallback;
 import com.openbloks.communicator.exceptions.CompileException;
 import com.openbloks.communicator.exceptions.NotSupportedException;
 import com.openbloks.communicator.models.OpenBlocksFile;
@@ -84,14 +86,49 @@ public interface OpenBlocksModule {
      * into the provided `View layout`
      */
     interface ProjectLayoutGUI extends OpenBlocksModule {
-        void show(View layout, OpenBlocksLayout layout_data);
+
+        /**
+         * This function is used to show the layout editor in the provided layout to inflate to.
+         *
+         * @param layout The layout where you should be putting / inflating your views
+         * @param layout_data The layout data to be displayed
+         * @param saveCallback The callback everytime this has to be saved
+         */
+        void show(View layout, OpenBlocksLayout layout_data,    SaveCallback<OpenBlocksLayout>  saveCallback);
     }
 
+    /**
+     * ProjectCodeGUI is used to display / edit the Code, this module should inflate a layout
+     * into the provided `View layout`
+     */
     interface ProjectCodeGUI extends OpenBlocksModule {
-        void show(View layout, OpenBlocksCode   code_data);
+
+        /**
+         * This function is used to show the code / block code editor in the provided layout to inflate to.
+         *
+         * @param layout The layout where you should be putting / inflating your views
+         * @param code_data The code data to be displayed
+         * @param saveCallback The callback everytime this has to be saved
+         */
+        void show(View layout, OpenBlocksCode   code_data,      SaveCallback<OpenBlocksCode>    saveCallback);
     }
 
+    /**
+     * ProjectCompiler is used to compile the code and the layout together into an APK at the
+     * provided location
+     */
     interface ProjectCompiler extends OpenBlocksModule {
-        void compile(OpenBlocksCode code, OpenBlocksLayout layout, String location) throws CompileException;
+
+        /**
+         * This function is used to compile the code and the layout into an APK file at the specified
+         * location
+         *
+         * @param code The code
+         * @param layout The layout
+         * @param location The location where the APK should be saved
+         * @param progress The progress callback where you will need to set when you made a progress / to notify the user on what's happening in the background
+         * @throws CompileException Exception when there is something wrong while compiling
+         */
+        void compile(OpenBlocksCode code, OpenBlocksLayout layout, String location, ProgressCallbacks progress) throws CompileException;
     }
 }
