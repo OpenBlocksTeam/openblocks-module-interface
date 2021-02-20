@@ -11,8 +11,8 @@ public interface OpenBlocksModule {
 
     interface ProjectManager extends OpenBlocksModule {
         /* Self-explanatory */
-        void                saveProject(OpenBlocksProject project);
-        OpenBlocksProject   getProject ();
+        void                saveProject(OpenBlocksRawProject project);
+        OpenBlocksRawProject getProject ();
 
         /*
          * exportProject() should export the provided project into a single file
@@ -27,7 +27,7 @@ public interface OpenBlocksModule {
          * @return The exported file
          * @throws NotSupportedException Throw this if you don't support this function
          */
-        OpenBlocksFile      exportProject(OpenBlocksProject project)    throws NotSupportedException;
+        OpenBlocksFile      exportProject(OpenBlocksRawProject project)    throws NotSupportedException;
 
         /**
          * This function is used to import a file / data that has been exported on exportProject
@@ -37,12 +37,16 @@ public interface OpenBlocksModule {
          * @return The imported project
          * @throws NotSupportedException Throw this if you don't support this function
          */
-        OpenBlocksProject   importProject(OpenBlocksFile input)         throws NotSupportedException;
+        OpenBlocksRawProject importProject(OpenBlocksFile input)         throws NotSupportedException;
 
         /**
          * This function is used to list every projects
          * @return A List of OpenBlocksProjects
          */
-        ArrayList<OpenBlocksProject> listProjects();
+        ArrayList<OpenBlocksRawProject> listProjects();
+    }
+
+    interface ProjectParser extends OpenBlocksModule {
+
     }
 }

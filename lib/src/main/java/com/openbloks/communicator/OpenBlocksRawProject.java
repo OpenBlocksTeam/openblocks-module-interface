@@ -2,14 +2,14 @@ package com.openbloks.communicator;
 
 import java.util.ArrayList;
 
-public class OpenBlocksProject {
+public class OpenBlocksRawProject {
 
     public String ID;
     public ArrayList<OpenBlocksFile> files;
 
-    public OpenBlocksProject() { }
+    public OpenBlocksRawProject() { }
 
-    public OpenBlocksProject(String ID, ArrayList<OpenBlocksFile> files) {
+    public OpenBlocksRawProject(String ID, ArrayList<OpenBlocksFile> files) {
         this.ID = ID;
         this.files = files;
     }
