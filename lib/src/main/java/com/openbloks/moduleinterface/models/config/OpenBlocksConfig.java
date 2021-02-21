@@ -3,6 +3,9 @@ package com.openbloks.moduleinterface.models.config;
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * OpenBlocksConfig is a list of configuration that can be added, removed, and edited
+ */
 public class OpenBlocksConfig {
     public enum Type {
         SWITCH,
