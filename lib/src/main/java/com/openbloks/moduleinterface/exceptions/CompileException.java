@@ -1,4 +1,4 @@
-package com.openbloks.communicator.exceptions;
+package com.openbloks.moduleinterface.exceptions;
 
 public class CompileException extends Exception {
     public String message;

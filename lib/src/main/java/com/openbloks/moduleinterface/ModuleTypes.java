@@ -1,4 +1,4 @@
-package com.openbloks.communicator;
+package com.openbloks.moduleinterface;
 
 public enum ModuleTypes {
     PROJECT_MANAGER,

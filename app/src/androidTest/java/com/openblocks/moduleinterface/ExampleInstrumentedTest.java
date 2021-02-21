@@ -1,4 +1,4 @@
-package com.openblocks.communicator;
+package com.openblocks.moduleinterface;
 
 import android.content.Context;
 

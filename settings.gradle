@@ -1,3 +1,2 @@
-rootProject.name = "OpenBlocks Module Communicator"
-include ':app'
+rootProject.name = "OpenBlocks Module Interface"
 include ':lib'

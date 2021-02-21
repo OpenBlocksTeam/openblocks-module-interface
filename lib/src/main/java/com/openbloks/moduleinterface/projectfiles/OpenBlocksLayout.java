@@ -1,6 +1,6 @@
-package com.openbloks.communicator.projectfiles;
+package com.openbloks.moduleinterface.projectfiles;
 
-import com.openbloks.communicator.models.layout.LayoutView;
+import com.openbloks.moduleinterface.models.layout.LayoutView;
 
 public class OpenBlocksLayout {
     public String parent_layout_name;

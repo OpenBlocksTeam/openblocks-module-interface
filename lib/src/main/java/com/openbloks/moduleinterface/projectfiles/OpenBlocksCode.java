@@ -1,6 +1,6 @@
-package com.openbloks.communicator.projectfiles;
+package com.openbloks.moduleinterface.projectfiles;
 
-import com.openbloks.communicator.models.code.BlockCode;
+import com.openbloks.moduleinterface.models.code.BlockCode;
 
 import java.util.ArrayList;
 import java.util.HashMap;

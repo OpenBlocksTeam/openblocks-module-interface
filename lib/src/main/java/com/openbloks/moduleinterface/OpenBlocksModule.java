@@ -1,22 +1,53 @@
-package com.openbloks.communicator;
+package com.openbloks.moduleinterface;
 
+import android.content.Context;
 import android.view.View;
 
-import com.openbloks.communicator.callbacks.ProgressCallbacks;
-import com.openbloks.communicator.callbacks.SaveCallback;
-import com.openbloks.communicator.exceptions.CompileException;
-import com.openbloks.communicator.exceptions.NotSupportedException;
-import com.openbloks.communicator.models.OpenBlocksFile;
-import com.openbloks.communicator.models.OpenBlocksRawProject;
-import com.openbloks.communicator.projectfiles.OpenBlocksCode;
-import com.openbloks.communicator.projectfiles.OpenBlocksLayout;
+import com.openbloks.moduleinterface.callbacks.ProgressCallbacks;
+import com.openbloks.moduleinterface.callbacks.SaveCallback;
+import com.openbloks.moduleinterface.exceptions.CompileException;
+import com.openbloks.moduleinterface.exceptions.NotSupportedException;
+import com.openbloks.moduleinterface.models.OpenBlocksFile;
+import com.openbloks.moduleinterface.models.OpenBlocksRawProject;
+import com.openbloks.moduleinterface.models.config.OpenBlocksConfig;
+import com.openbloks.moduleinterface.projectfiles.OpenBlocksCode;
+import com.openbloks.moduleinterface.projectfiles.OpenBlocksLayout;
 
 import java.util.ArrayList;
 
 // TODO: CREATE A PLACE TO STORE CONFIG FOR THESE MODULES
 
 public interface OpenBlocksModule {
-    ModuleTypes getType();
+
+    /**
+     * This function is used to indicate what type of module is this?
+     * OpenBlocks need at least 1 module for each type for it to work
+     *
+     * NOTE: Do not return the wrong module type, as it can cause the app to be unstable
+     *
+     * @return This current module type
+     */
+    ModuleTypes             getType();
+
+
+    /* OpenBlocksConfig is a set of Config Items, where you can create a configuration that can be
+       Edited by the user */
+
+    /**
+     * This function is called when the user requests this specific module's configuration
+     *
+     * @return This module's configuration
+     */
+    OpenBlocksConfig        setupConfig();
+
+    /**
+     * This function is used to save / apply configuration that is retrieved from setupConfig()
+     * and has been edited / configured by the user itself.
+     *
+     * @param config The new configuration
+     */
+    void                    applyConfig(OpenBlocksConfig config);
+
 
     /**
      * Project Manager is used to manage on where the project is, how can it be accessed, how
@@ -90,11 +121,12 @@ public interface OpenBlocksModule {
         /**
          * This function is used to show the layout editor in the provided layout to inflate to.
          *
+         * @param context The context
          * @param layout The layout where you should be putting / inflating your views
          * @param layout_data The layout data to be displayed
          * @param saveCallback The callback everytime this has to be saved
          */
-        void show(View layout, OpenBlocksLayout layout_data,    SaveCallback<OpenBlocksLayout>  saveCallback);
+        void show(Context context, View layout, OpenBlocksLayout layout_data, SaveCallback<OpenBlocksLayout> saveCallback);
     }
 
     /**
@@ -106,11 +138,12 @@ public interface OpenBlocksModule {
         /**
          * This function is used to show the code / block code editor in the provided layout to inflate to.
          *
+         * @param context The context
          * @param layout The layout where you should be putting / inflating your views
          * @param code_data The code data to be displayed
          * @param saveCallback The callback everytime this has to be saved
          */
-        void show(View layout, OpenBlocksCode   code_data,      SaveCallback<OpenBlocksCode>    saveCallback);
+        void show(Context context, View layout, OpenBlocksCode code_data, SaveCallback<OpenBlocksCode> saveCallback);
     }
 
     /**

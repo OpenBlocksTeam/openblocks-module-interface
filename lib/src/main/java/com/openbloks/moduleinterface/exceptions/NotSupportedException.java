@@ -1,4 +1,4 @@
-package com.openbloks.communicator.exceptions;
+package com.openbloks.moduleinterface.exceptions;
 
 /* When a module doesn't support the method in the interface, throw this instead of returning null */
 public class NotSupportedException extends Exception {

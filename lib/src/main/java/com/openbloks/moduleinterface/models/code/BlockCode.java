@@ -1,4 +1,4 @@
-package com.openbloks.communicator.models.code;
+package com.openbloks.moduleinterface.models.code;
 
 import java.util.ArrayList;
 
