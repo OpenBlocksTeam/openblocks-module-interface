@@ -1,5 +1,6 @@
 package com.openbloks.moduleinterface.exceptions;
 
+/* When something wrong happened during compiling on PROJECT_COMPILER module, throw this */
 public class CompileException extends Exception {
     public String message;
 
