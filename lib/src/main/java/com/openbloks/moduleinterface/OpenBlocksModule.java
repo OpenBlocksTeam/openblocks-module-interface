@@ -27,7 +27,7 @@ public interface OpenBlocksModule {
      *
      * @return This current module type
      */
-    ModuleTypes             getType();
+    Type             getType();
 
 
     /* OpenBlocksConfig is a set of Config Items, where you can create a configuration that can be
@@ -47,6 +47,19 @@ public interface OpenBlocksModule {
      * @param config The new configuration
      */
     void                    applyConfig(OpenBlocksConfig config);
+
+
+    /**
+     * This enum is used to identify what module is this?
+     * one of this enums should be returned on OpenBlockModule.getType()
+     */
+    enum Type {
+        PROJECT_MANAGER,
+        PROJECT_PARSER,
+        PROJECT_LAYOUT_GUI,
+        PROJECT_CODE_GUI,
+        PROJECT_COMPILER
+    }
 
 
     /**
