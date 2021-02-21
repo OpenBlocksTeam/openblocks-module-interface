@@ -1,4 +1,4 @@
-package com.openbloks.moduleinterface.models.config;
+package com.openblocks.moduleinterface.models.config;
 
 /**
  * OpenBlocksConfigItem is an item of a list of configurations (on {@link OpenBlocksConfig})

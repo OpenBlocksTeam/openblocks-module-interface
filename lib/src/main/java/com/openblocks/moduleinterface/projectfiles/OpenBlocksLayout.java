@@ -1,7 +1,7 @@
-package com.openbloks.moduleinterface.projectfiles;
+package com.openblocks.moduleinterface.projectfiles;
 
-import com.openbloks.moduleinterface.models.layout.LayoutView;
-import com.openbloks.moduleinterface.models.layout.LayoutViewXMLAttribute;
+import com.openblocks.moduleinterface.models.layout.LayoutView;
+import com.openblocks.moduleinterface.models.layout.LayoutViewXMLAttribute;
 
 /**
  * OpenBlocksLayout is a model that is used to represent a layout in XML with the parent name of

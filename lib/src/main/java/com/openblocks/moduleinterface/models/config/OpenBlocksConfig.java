@@ -1,4 +1,4 @@
-package com.openbloks.moduleinterface.models.config;
+package com.openblocks.moduleinterface.models.config;
 
 import java.util.HashMap;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package com.openbloks.moduleinterface.callbacks;
+package com.openblocks.moduleinterface.callbacks;
 
 /**
  * ProgressCallbacks are used to indicate what is this doing running in the background while doing progress

@@ -1,4 +1,4 @@
-package com.openbloks.moduleinterface;
+package com.openblocks.moduleinterface;
 
 import org.junit.Test;
 

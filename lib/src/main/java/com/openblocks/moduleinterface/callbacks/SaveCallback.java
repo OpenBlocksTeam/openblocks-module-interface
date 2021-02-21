@@ -1,4 +1,4 @@
-package com.openbloks.moduleinterface.callbacks;
+package com.openblocks.moduleinterface.callbacks;
 
 /**
  * Used for PROJECT_LAYOUT_GUI and PROJECT_CODE_GUI to save it's data

@@ -1,4 +1,4 @@
-package com.openbloks.moduleinterface.exceptions;
+package com.openblocks.moduleinterface.exceptions;
 
 /* When something wrong happened during compiling on PROJECT_COMPILER module, throw this */
 public class CompileException extends Exception {

@@ -1,4 +1,4 @@
-package com.openbloks.moduleinterface.models.layout;
+package com.openblocks.moduleinterface.models.layout;
 
 public class LayoutViewXMLAttribute {
     public String prefix;
