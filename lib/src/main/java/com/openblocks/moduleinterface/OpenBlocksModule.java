@@ -3,7 +3,6 @@ package com.openblocks.moduleinterface;
 import android.content.Context;
 import android.view.View;
 
-import com.openblocks.moduleinterface.callbacks.ProgressCallbacks;
 import com.openblocks.moduleinterface.callbacks.SaveCallback;
 import com.openblocks.moduleinterface.exceptions.CompileException;
 import com.openblocks.moduleinterface.exceptions.NotSupportedException;
@@ -14,8 +13,6 @@ import com.openblocks.moduleinterface.projectfiles.OpenBlocksCode;
 import com.openblocks.moduleinterface.projectfiles.OpenBlocksLayout;
 
 import java.util.ArrayList;
-
-// TODO: CREATE A PLACE TO STORE CONFIG FOR THESE MODULES
 
 public interface OpenBlocksModule {
 
@@ -136,10 +133,11 @@ public interface OpenBlocksModule {
          *
          * @param context The context
          * @param layout The layout where you should be putting / inflating your views
+         * @param code_data The code of this project, used for reference
          * @param layout_data The layout data to be displayed
          * @param saveCallback The callback everytime this has to be saved
          */
-        void show(Context context, View layout, OpenBlocksLayout layout_data, SaveCallback<OpenBlocksLayout> saveCallback);
+        void show(Context context, View layout, OpenBlocksCode code_data, OpenBlocksLayout layout_data, SaveCallback<OpenBlocksLayout> saveCallback);
     }
 
     /**
@@ -154,9 +152,10 @@ public interface OpenBlocksModule {
          * @param context The context
          * @param layout The layout where you should be putting / inflating your views
          * @param code_data The code data to be displayed
+         * @param layout_data The layout of this project, used for reference
          * @param saveCallback The callback everytime this has to be saved
          */
-        void show(Context context, View layout, OpenBlocksCode code_data, SaveCallback<OpenBlocksCode> saveCallback);
+        void show(Context context, View layout, OpenBlocksCode code_data, OpenBlocksLayout layout_data, SaveCallback<OpenBlocksCode> saveCallback);
     }
 
     /**
