@@ -172,9 +172,8 @@ public interface OpenBlocksModule {
          * @param code The code
          * @param layout The layout
          * @param location The location where the APK should be saved
-         * @param progress The progress callback where you will need to set when you made a progress / to notify the user on what's happening in the background
          * @throws CompileException Exception when there is something wrong while compiling
          */
-        void compile(OpenBlocksCode code, OpenBlocksLayout layout, String location, ProgressCallbacks progress) throws CompileException;
+        void compile(OpenBlocksCode code, OpenBlocksLayout layout, String location) throws CompileException;
     }
 }
