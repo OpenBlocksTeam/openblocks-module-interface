@@ -36,7 +36,7 @@ public class OpenBlocksConfig {
         return config.keySet().toArray(new String[0]);
     }
 
-    public Object getConfig(String TAG) {
+    public Object getConfigValue(String TAG) {
         if (!config.containsKey(TAG)) return null;
 
         return Objects.requireNonNull(config.get(TAG)).value;
