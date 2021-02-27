@@ -1,5 +1,6 @@
 package com.openblocks.moduleinterface.models.config;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -40,5 +41,9 @@ public class OpenBlocksConfig {
         if (!config.containsKey(TAG)) return null;
 
         return Objects.requireNonNull(config.get(TAG)).value;
+    }
+
+    public ArrayList<OpenBlocksConfigItem> getConfigs() {
+        return (ArrayList<OpenBlocksConfigItem>) config.values();
     }
 }
