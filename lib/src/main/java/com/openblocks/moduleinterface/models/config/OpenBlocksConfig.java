@@ -43,6 +43,10 @@ public class OpenBlocksConfig {
         return Objects.requireNonNull(config.get(TAG)).value;
     }
 
+    public void setConfigValue(String TAG, Object value) {
+        config.get(TAG).value = value;
+    }
+
     public ArrayList<OpenBlocksConfigItem> getConfigs() {
         return (ArrayList<OpenBlocksConfigItem>) config.values();
     }
