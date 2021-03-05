@@ -24,7 +24,16 @@ public interface OpenBlocksModule {
      *
      * @return This current module type
      */
-    Type             getType();
+    Type                    getType();
+
+
+    /**
+     * This function will be called everytime the module is loaded
+     *
+     * @param context The context of where the module is loaded
+     */
+    void                    initialize(Context context);
+
 
 
     /* OpenBlocksConfig is a set of Config Items, where you can create a configuration that can be
