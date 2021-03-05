@@ -66,7 +66,7 @@ public interface OpenBlocksModule {
     interface ProjectManager extends OpenBlocksModule {
         /* Self-explanatory */
         void                    saveProject(OpenBlocksRawProject project);
-        OpenBlocksRawProject    getProject ();
+        OpenBlocksRawProject    getProject (String project_id);
 
         /*
          * exportProject() should export the provided project into a single file
