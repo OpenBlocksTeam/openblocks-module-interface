@@ -122,21 +122,33 @@ public interface OpenBlocksModule {
          * @param project The project
          * @return The parsed layout from the provided project
          */
-        OpenBlocksLayout    parseLayout (OpenBlocksRawProject project);
+        OpenBlocksLayout            parseLayout     (OpenBlocksRawProject project);
 
         /**
          * This function is used to parse the raw project into a code
          * @param project The project
          * @return The parsed code from the provided project
          */
-        OpenBlocksCode      parseCode   (OpenBlocksRawProject project);
+        OpenBlocksCode              parseCode       (OpenBlocksRawProject project);
 
         /**
          * This function is used to parse the raw project to get it's metadata
          * @param project The project
          * @return The parsed code from the provided project
          */
-        OpenBlocksProjectMetadata parseMetadata (OpenBlocksRawProject project);
+        OpenBlocksProjectMetadata   parseMetadata   (OpenBlocksRawProject project);
+
+        /**
+         * This function is used to save a code, layout, and metadata into one
+         * single raw project (list of files)
+         * @param metadata The project's metadata
+         * @param code The project's code
+         * @param layout The project's layout
+         * @return The raw project containing files representation of these metadata, code and layout
+         */
+        OpenBlocksRawProject        saveProject     (OpenBlocksProjectMetadata metadata,
+                                                     OpenBlocksCode code,
+                                                     OpenBlocksLayout layout);
     }
 
     /**
