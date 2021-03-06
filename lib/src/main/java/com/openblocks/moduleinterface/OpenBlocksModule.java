@@ -14,7 +14,7 @@ import com.openblocks.moduleinterface.projectfiles.OpenBlocksLayout;
 
 import java.util.ArrayList;
 
-public abstract class OpenBlocksModule {
+public interface OpenBlocksModule {
 
     /**
      * This function is used to indicate what type of module is this?
@@ -24,7 +24,7 @@ public abstract class OpenBlocksModule {
      *
      * @return This current module type
      */
-    abstract Type                    getType();
+    Type                    getType();
 
 
     /**
@@ -32,7 +32,7 @@ public abstract class OpenBlocksModule {
      *
      * @param context The context of where the module is loaded
      */
-    abstract void                    initialize(Context context);
+    void                    initialize(Context context);
 
 
 
@@ -44,9 +44,7 @@ public abstract class OpenBlocksModule {
      *
      * @return This module's configuration
      */
-    OpenBlocksConfig setupConfig() {
-        return new OpenBlocksConfig();
-    }
+    OpenBlocksConfig        setupConfig();
 
     /**
      * This function is used to save / apply configuration that is retrieved from setupConfig()
@@ -54,7 +52,7 @@ public abstract class OpenBlocksModule {
      *
      * @param config The new configuration
      */
-    void applyConfig(OpenBlocksConfig config) { }
+    void                    applyConfig(OpenBlocksConfig config);
 
 
     /**
@@ -74,16 +72,10 @@ public abstract class OpenBlocksModule {
      * Project Manager is used to manage on where the project is, how can it be accessed, how
      * to write to it, and how to list them.
      */
-    abstract static class ProjectManager extends OpenBlocksModule {
+    interface ProjectManager extends OpenBlocksModule {
         /* Self-explanatory */
-        abstract void                       saveProject (OpenBlocksRawProject project);
-        abstract OpenBlocksRawProject       getProject  (String project_id);
-
-        /**
-         * This function is used to list every projects
-         * @return A List of OpenBlocksProjects
-         */
-        abstract ArrayList<OpenBlocksRawProject> listProjects();
+        void                    saveProject(OpenBlocksRawProject project);
+        OpenBlocksRawProject    getProject (String project_id);
 
         /*
          * exportProject() should export the provided project into a single file
@@ -98,9 +90,7 @@ public abstract class OpenBlocksModule {
          * @return The exported file
          * @throws NotSupportedException Throw this if you don't support this function
          */
-        OpenBlocksFile exportProject(OpenBlocksRawProject project) throws NotSupportedException {
-            throw new NotSupportedException("Export project is by default not implemented in this module");
-        }
+        OpenBlocksFile          exportProject(OpenBlocksRawProject project)     throws NotSupportedException;
 
         /**
          * This function is used to import a file / data that has been exported on exportProject
@@ -110,16 +100,20 @@ public abstract class OpenBlocksModule {
          * @return The imported project
          * @throws NotSupportedException Throw this if you don't support this function
          */
-        OpenBlocksRawProject importProject(OpenBlocksFile input) throws NotSupportedException {
-            throw new NotSupportedException("Import project is by default not implemented in this module");
-        }
+        OpenBlocksRawProject    importProject(OpenBlocksFile input)             throws NotSupportedException;
+
+        /**
+         * This function is used to list every projects
+         * @return A List of OpenBlocksProjects
+         */
+        ArrayList<OpenBlocksRawProject> listProjects();
     }
 
     /**
      * Project Parser is used to parse a raw project (that you can get from using the ProjectManager)
      * into OpenBlocksLayout and OpenBlocksCode, that will later be displayed to the user
      */
-    abstract static class ProjectParser extends OpenBlocksModule {
+    interface ProjectParser extends OpenBlocksModule {
 
         /**
          * This function is used to parse the raw project into a layout
@@ -127,21 +121,21 @@ public abstract class OpenBlocksModule {
          * @param project The project
          * @return The parsed layout from the provided project
          */
-        abstract OpenBlocksLayout       parseLayout (OpenBlocksRawProject project);
+        OpenBlocksLayout    parseLayout (OpenBlocksRawProject project);
 
         /**
          * This function is used to parse the raw project into a code
          * @param project The project
          * @return The parsed code from the provided project
          */
-        abstract OpenBlocksCode         parseCode   (OpenBlocksRawProject project);
+        OpenBlocksCode      parseCode   (OpenBlocksRawProject project);
     }
 
     /**
      * ProjectLayoutGUI is used to display / edit the layout, this module should inflate a layout
      * into the provided `View layout`
      */
-    abstract static class ProjectLayoutGUI extends OpenBlocksModule {
+    interface ProjectLayoutGUI extends OpenBlocksModule {
 
         /**
          * This function is used to show the layout editor in the provided layout to inflate to.
@@ -152,14 +146,14 @@ public abstract class OpenBlocksModule {
          * @param layout_data The layout data to be displayed
          * @param saveCallback The callback everytime this has to be saved
          */
-        abstract void show(Context context, View layout, OpenBlocksCode code_data, OpenBlocksLayout layout_data, SaveCallback<OpenBlocksLayout> saveCallback);
+        void show(Context context, View layout, OpenBlocksCode code_data, OpenBlocksLayout layout_data, SaveCallback<OpenBlocksLayout> saveCallback);
     }
 
     /**
      * ProjectCodeGUI is used to display / edit the Code, this module should inflate a layout
      * into the provided `View layout`
      */
-    abstract static class ProjectCodeGUI extends OpenBlocksModule {
+    interface ProjectCodeGUI extends OpenBlocksModule {
 
         /**
          * This function is used to show the code / block code editor in the provided layout to inflate to.
@@ -170,14 +164,14 @@ public abstract class OpenBlocksModule {
          * @param layout_data The layout of this project, used for reference
          * @param saveCallback The callback everytime this has to be saved
          */
-        abstract void show(Context context, View layout, OpenBlocksCode code_data, OpenBlocksLayout layout_data, SaveCallback<OpenBlocksCode> saveCallback);
+        void show(Context context, View layout, OpenBlocksCode code_data, OpenBlocksLayout layout_data, SaveCallback<OpenBlocksCode> saveCallback);
     }
 
     /**
      * ProjectCompiler is used to compile the code and the layout together into an APK at the
      * provided location
      */
-    abstract static class ProjectCompiler extends OpenBlocksModule {
+    interface ProjectCompiler extends OpenBlocksModule {
 
         /**
          * This function is used to compile the code and the layout into an APK file at the specified
@@ -188,6 +182,6 @@ public abstract class OpenBlocksModule {
          * @param location The location where the APK should be saved
          * @throws CompileException Exception when there is something wrong while compiling
          */
-        abstract void compile(OpenBlocksCode code, OpenBlocksLayout layout, String location) throws CompileException;
+        void compile(OpenBlocksCode code, OpenBlocksLayout layout, String location) throws CompileException;
     }
 }
