@@ -7,6 +7,7 @@ import com.openblocks.moduleinterface.callbacks.SaveCallback;
 import com.openblocks.moduleinterface.exceptions.CompileException;
 import com.openblocks.moduleinterface.exceptions.NotSupportedException;
 import com.openblocks.moduleinterface.models.OpenBlocksFile;
+import com.openblocks.moduleinterface.models.OpenBlocksProjectMetadata;
 import com.openblocks.moduleinterface.models.OpenBlocksRawProject;
 import com.openblocks.moduleinterface.models.config.OpenBlocksConfig;
 import com.openblocks.moduleinterface.projectfiles.OpenBlocksCode;
@@ -129,6 +130,13 @@ public interface OpenBlocksModule {
          * @return The parsed code from the provided project
          */
         OpenBlocksCode      parseCode   (OpenBlocksRawProject project);
+
+        /**
+         * This function is used to parse the raw project to get it's metadata
+         * @param project The project
+         * @return The parsed code from the provided project
+         */
+        OpenBlocksProjectMetadata parseMetadata (OpenBlocksRawProject project);
     }
 
     /**
