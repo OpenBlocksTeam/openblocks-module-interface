@@ -78,6 +78,20 @@ public interface OpenBlocksModule {
         void                    saveProject(OpenBlocksRawProject project);
         OpenBlocksRawProject    getProject (String project_id);
 
+        /**
+         * This function is used to list every projects
+         * @return A List of OpenBlocksProjects
+         */
+        ArrayList<OpenBlocksRawProject> listProjects();
+
+        /**
+         * This function is used to check if a project with
+         * the specified id exists
+         * @param project_id The project id
+         * @return Does the project with the project id exists?
+         */
+        boolean                 projectExists(String project_id);
+
         /*
          * exportProject() should export the provided project into a single file
          *
@@ -102,12 +116,6 @@ public interface OpenBlocksModule {
          * @throws NotSupportedException Throw this if you don't support this function
          */
         OpenBlocksRawProject    importProject(OpenBlocksFile input)             throws NotSupportedException;
-
-        /**
-         * This function is used to list every projects
-         * @return A List of OpenBlocksProjects
-         */
-        ArrayList<OpenBlocksRawProject> listProjects();
     }
 
     /**
@@ -116,6 +124,13 @@ public interface OpenBlocksModule {
      */
     interface ProjectParser extends OpenBlocksModule {
 
+        /**
+         * This function is used to generate a Free ID that will be used
+         * to create a new project
+         * @param existing_ids project IDs that already exists
+         * @return The free ID
+         */
+        String                      generateFreeId  (ArrayList<String> existing_ids);
         /**
          * This function is used to parse the raw project into a layout
          *
