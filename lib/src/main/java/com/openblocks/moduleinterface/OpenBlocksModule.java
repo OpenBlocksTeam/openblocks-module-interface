@@ -3,6 +3,8 @@ package com.openblocks.moduleinterface;
 import android.content.Context;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.openblocks.moduleinterface.callbacks.SaveCallback;
 import com.openblocks.moduleinterface.exceptions.CompileException;
 import com.openblocks.moduleinterface.exceptions.NotSupportedException;
@@ -141,6 +143,13 @@ public interface OpenBlocksModule {
          * @return The free ID
          */
         String                      generateFreeId  (ArrayList<String> existing_ids);
+
+        /**
+         * This function is used to generate a new project
+         * @param project_id The project id that is to be used as the id
+         * @return The empty generated project
+         */
+        OpenBlocksRawProject        generateNewProject(String project_id);
 
         /**
          * This function is used to parse the raw project into a layout
