@@ -1,6 +1,7 @@
 package com.openblocks.moduleinterface;
 
 import android.content.Context;
+import android.util.Pair;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -145,11 +146,11 @@ public interface OpenBlocksModule {
         String                      generateFreeId  (ArrayList<String> existing_ids);
 
         /**
-         * This function is used to generate a new project
-         * @param project_id The project id that is to be used as the id
-         * @return The empty generated project
+         * This function is used to initialize an empty project
+         * @return An initialized code and layout
          */
-        OpenBlocksRawProject        generateNewProject(String project_id);
+        Pair<OpenBlocksCode, OpenBlocksLayout>
+                                    initializeEmptyProject();
 
         /**
          * This function is used to parse the raw project into a layout
