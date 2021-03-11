@@ -72,6 +72,8 @@ public interface OpenBlocksModule {
     /**
      * Project Manager is used to manage on where the project is, how can it be accessed, how
      * to write to it, and how to list them.
+     * <br/>
+     * TL;DR This module manages the file access of the project (read, write, delete, etc)
      */
     interface ProjectManager extends OpenBlocksModule {
         /* Self-explanatory */
@@ -121,6 +123,14 @@ public interface OpenBlocksModule {
     /**
      * Project Parser is used to parse a raw project (that you can get from using the ProjectManager)
      * into OpenBlocksLayout and OpenBlocksCode, that will later be displayed to the user
+     * <br/>
+     * <br/>
+     * <h3>TL;DR</h3>
+     * This module manages:
+     * <ul>
+     *     <li>Conversion between serialized data into {@link OpenBlocksCode}, {@link OpenBlocksLayout}, {@link OpenBlocksProjectMetadata} and vice versa.</li>
+     *     <li>Project IDs</li>
+     * </ul>
      */
     interface ProjectParser extends OpenBlocksModule {
 
@@ -131,6 +141,7 @@ public interface OpenBlocksModule {
          * @return The free ID
          */
         String                      generateFreeId  (ArrayList<String> existing_ids);
+
         /**
          * This function is used to parse the raw project into a layout
          *
@@ -169,6 +180,8 @@ public interface OpenBlocksModule {
     /**
      * ProjectLayoutGUI is used to display / edit the layout, this module should inflate a layout
      * into the provided `View layout`
+     * <br/>
+     * TL;DR This module manages the layout editor
      */
     interface ProjectLayoutGUI extends OpenBlocksModule {
 
@@ -205,6 +218,8 @@ public interface OpenBlocksModule {
     /**
      * ProjectCompiler is used to compile the code and the layout together into an APK at the
      * provided location
+     * <br/>
+     * TL;DR This project compiles the code and layout into an APK at the specified location
      */
     interface ProjectCompiler extends OpenBlocksModule {
 
@@ -212,11 +227,12 @@ public interface OpenBlocksModule {
          * This function is used to compile the code and the layout into an APK file at the specified
          * location
          *
+         * @param metadata The project metadata, contains app name, app package, etc
          * @param code The code
          * @param layout The layout
          * @param location The location where the APK should be saved
          * @throws CompileException Exception when there is something wrong while compiling
          */
-        void compile(OpenBlocksCode code, OpenBlocksLayout layout, String location) throws CompileException;
+        void compile(OpenBlocksProjectMetadata metadata, OpenBlocksCode code, OpenBlocksLayout layout, String location) throws CompileException;
     }
 }
