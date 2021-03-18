@@ -1,21 +1,25 @@
 package com.openblocks.moduleinterface.projectfiles;
 
-import com.openblocks.moduleinterface.models.layout.LayoutView;
 import com.openblocks.moduleinterface.models.layout.LayoutViewXMLAttribute;
 
+import java.util.ArrayList;
+
 /**
- * OpenBlocksLayout is a model that is used to represent a layout in XML with the parent name of
- * {@link #parent_layout_name} with the attribute of {@link #parent_xml_attribute}
- * with the child of {@link #child}
+ * OpenBlocksLayout is a model that is used to represent a layout in XML
  */
 public class OpenBlocksLayout {
-    public String parent_layout_name;
-    public LayoutViewXMLAttribute parent_xml_attribute;
-    public LayoutView child;
+    public ArrayList<OpenBlocksLayout> childs = new ArrayList<>();
+    public String view_name;
+    public ArrayList<LayoutViewXMLAttribute> xml_attributes;
 
-    public OpenBlocksLayout(String parent_layout_name, LayoutViewXMLAttribute parent_xml_attribute, LayoutView child) {
-        this.parent_layout_name = parent_layout_name;
-        this.parent_xml_attribute = parent_xml_attribute;
-        this.child = child;
+    public OpenBlocksLayout(ArrayList<OpenBlocksLayout> childes, String view_name, ArrayList<LayoutViewXMLAttribute> xml_attributes) {
+        this.childs = childes;
+        this.view_name = view_name;
+        this.xml_attributes = xml_attributes;
+    }
+
+    public OpenBlocksLayout(String view_name, ArrayList<LayoutViewXMLAttribute> xml_attributes) {
+        this.view_name = view_name;
+        this.xml_attributes = xml_attributes;
     }
 }
