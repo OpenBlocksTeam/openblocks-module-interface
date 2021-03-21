@@ -212,7 +212,7 @@ public interface OpenBlocksModule {
          * This function is used to initialize a new layout
          * @return An initialized {@link OpenBlocksLayout}
          */
-        OpenBlocksCode initializeNewLayout();
+        OpenBlocksLayout initializeNewLayout();
     }
 
     /**
