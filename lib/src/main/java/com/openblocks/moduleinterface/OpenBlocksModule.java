@@ -6,6 +6,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import com.openblocks.moduleinterface.callbacks.Logger;
 import com.openblocks.moduleinterface.callbacks.SaveCallback;
 import com.openblocks.moduleinterface.exceptions.CompileException;
 import com.openblocks.moduleinterface.exceptions.NotSupportedException;
@@ -35,8 +36,9 @@ public interface OpenBlocksModule {
      * This function will be called everytime the module is loaded
      *
      * @param context The context of where the module is loaded
+     * @param logger The logger where you can log stuff
      */
-    void                    initialize(Context context);
+    void                    initialize(Context context, Logger logger);
 
 
 
