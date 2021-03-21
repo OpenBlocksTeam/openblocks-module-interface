@@ -10,6 +10,7 @@ import com.openblocks.moduleinterface.callbacks.Logger;
 import com.openblocks.moduleinterface.callbacks.SaveCallback;
 import com.openblocks.moduleinterface.exceptions.CompileException;
 import com.openblocks.moduleinterface.exceptions.NotSupportedException;
+import com.openblocks.moduleinterface.exceptions.ParseException;
 import com.openblocks.moduleinterface.models.OpenBlocksFile;
 import com.openblocks.moduleinterface.models.OpenBlocksProjectMetadata;
 import com.openblocks.moduleinterface.models.OpenBlocksRawProject;
@@ -159,22 +160,28 @@ public interface OpenBlocksModule {
          *
          * @param project The project
          * @return The parsed layout from the provided project
+         * @throws ParseException When something goes wrong while parsing layout
          */
-        OpenBlocksLayout            parseLayout     (OpenBlocksRawProject project);
+        @NonNull
+        OpenBlocksLayout            parseLayout     (OpenBlocksRawProject project) throws ParseException;
 
         /**
          * This function is used to parse the raw project into a code
          * @param project The project
          * @return The parsed code from the provided project
+         * @throws ParseException When something goes wrong while parsing the code
          */
-        OpenBlocksCode              parseCode       (OpenBlocksRawProject project);
+        @NonNull
+        OpenBlocksCode              parseCode       (OpenBlocksRawProject project) throws ParseException;
 
         /**
          * This function is used to parse the raw project to get it's metadata
          * @param project The project
          * @return The parsed code from the provided project
+         * @throws ParseException When something goes wrong while parsing the metadata
          */
-        OpenBlocksProjectMetadata   parseMetadata   (OpenBlocksRawProject project);
+        @NonNull
+        OpenBlocksProjectMetadata   parseMetadata   (OpenBlocksRawProject project) throws ParseException;
 
         /**
          * This function is used to save a code, layout, and metadata into one
@@ -184,6 +191,7 @@ public interface OpenBlocksModule {
          * @param layout The project's layout
          * @return The raw project containing files representation of these metadata, code and layout
          */
+        @NonNull
         OpenBlocksRawProject        saveProject     (OpenBlocksProjectMetadata metadata,
                                                      OpenBlocksCode code,
                                                      OpenBlocksLayout layout);
