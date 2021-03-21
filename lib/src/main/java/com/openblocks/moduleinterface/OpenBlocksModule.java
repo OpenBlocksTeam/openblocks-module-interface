@@ -1,7 +1,6 @@
 package com.openblocks.moduleinterface;
 
 import android.content.Context;
-import android.util.Pair;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -149,13 +148,6 @@ public interface OpenBlocksModule {
         String                      generateFreeId  (ArrayList<String> existing_ids);
 
         /**
-         * This function is used to initialize an empty project
-         * @return An initialized code and layout
-         */
-        Pair<OpenBlocksCode, OpenBlocksLayout>
-                                    initializeEmptyProject();
-
-        /**
          * This function is used to parse the raw project into a layout
          *
          * @param project The project
@@ -215,6 +207,12 @@ public interface OpenBlocksModule {
          * @param saveCallback The callback everytime this has to be saved
          */
         void show(Context context, View layout, OpenBlocksCode code_data, OpenBlocksLayout layout_data, SaveCallback<OpenBlocksLayout> saveCallback);
+
+        /**
+         * This function is used to initialize a new layout
+         * @return An initialized {@link OpenBlocksLayout}
+         */
+        OpenBlocksCode initializeNewLayout();
     }
 
     /**
@@ -233,6 +231,12 @@ public interface OpenBlocksModule {
          * @param saveCallback The callback everytime this has to be saved
          */
         void show(Context context, View layout, OpenBlocksCode code_data, OpenBlocksLayout layout_data, SaveCallback<OpenBlocksCode> saveCallback);
+
+        /**
+         * This function is used to initialize a new OpenBlocks code
+         * @return An initialized {@link OpenBlocksCode}
+         */
+        OpenBlocksCode initializeNewCode();
     }
 
     /**
