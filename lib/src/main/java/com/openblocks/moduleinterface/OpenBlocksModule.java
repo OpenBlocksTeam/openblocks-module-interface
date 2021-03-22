@@ -70,7 +70,8 @@ public interface OpenBlocksModule {
         PROJECT_PARSER,
         PROJECT_LAYOUT_GUI,
         PROJECT_CODE_GUI,
-        PROJECT_COMPILER
+        PROJECT_COMPILER,
+        BLOCKS_COLLECTION
     }
 
 
@@ -237,6 +238,18 @@ public interface OpenBlocksModule {
          * @return An initialized {@link OpenBlocksCode}
          */
         OpenBlocksCode initializeNewCode();
+    }
+
+    /**
+     * Collection of blocks, initialize(), getConfig(), saveConfig() are ignored,
+     * see the example module for an easier understanding
+     */
+    interface BlocksCollection extends OpenBlocksModule {
+        /**
+         * This function is used to fetch blocks that will be used and displayed using the {@link ProjectCodeGUI}
+         * @return Simply put, this: Object[Object[String opcode, String format, ParseBlockTask]]
+         */
+        Object[] getBlocks();
     }
 
     /**
