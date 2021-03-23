@@ -233,12 +233,6 @@ public interface OpenBlocksModule {
          * @param saveCallback The callback everytime this has to be saved
          */
         void show(Context context, View layout, OpenBlocksCode code_data, OpenBlocksLayout layout_data, SaveCallback<OpenBlocksCode> saveCallback);
-
-        /**
-         * This function is used to initialize a new OpenBlocks code
-         * @return An initialized {@link OpenBlocksCode}
-         */
-        OpenBlocksCode initializeNewCode();
     }
 
     /**
@@ -246,6 +240,13 @@ public interface OpenBlocksModule {
      * see the example module for an easier understanding
      */
     interface BlocksCollection extends OpenBlocksModule {
+
+        /**
+         * This function is used to initialize a new OpenBlocks code
+         * @return An initialized {@link OpenBlocksCode}
+         */
+        OpenBlocksCode initializeNewCode();
+
         /**
          * This function is used to fetch blocks that will be used and displayed using the {@link ProjectCodeGUI}
          * @return Simply put, this: Object[Object[String opcode, String format, ParseBlockTask]]
