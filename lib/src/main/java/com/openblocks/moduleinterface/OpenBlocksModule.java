@@ -13,6 +13,7 @@ import com.openblocks.moduleinterface.exceptions.ParseException;
 import com.openblocks.moduleinterface.models.OpenBlocksFile;
 import com.openblocks.moduleinterface.models.OpenBlocksProjectMetadata;
 import com.openblocks.moduleinterface.models.OpenBlocksRawProject;
+import com.openblocks.moduleinterface.models.compiler.IncludedBinary;
 import com.openblocks.moduleinterface.models.config.OpenBlocksConfig;
 import com.openblocks.moduleinterface.projectfiles.OpenBlocksCode;
 import com.openblocks.moduleinterface.projectfiles.OpenBlocksLayout;
@@ -261,9 +262,15 @@ public interface OpenBlocksModule {
     interface ProjectCompiler extends OpenBlocksModule {
 
         /**
+         * This function initializes the compiler module with included
+         * essential build tools' binaries like aapt, aapt2, and zipalign
+         * @param includedBinaries A list of binaries included within the app
+         */
+        void initializeCompiler(ArrayList<IncludedBinary> includedBinaries);
+
+        /**
          * This function is used to compile the code and the layout into an APK file at the specified
          * location
-         *
          * @param metadata The project metadata, contains app name, app package, etc
          * @param code The code
          * @param layout The layout
