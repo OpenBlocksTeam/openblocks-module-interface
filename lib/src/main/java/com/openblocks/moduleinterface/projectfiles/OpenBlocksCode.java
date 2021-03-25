@@ -7,17 +7,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 // TODO: 3/18/21 Should be possible to make multiple collection of blocks / activity
-// TODO: 3/18/21 Customizable code template
 public class OpenBlocksCode {
-    public HashMap<String, ParseBlockTask> code_templates;
+    public String block_collection_name;
     public ArrayList<BlockCode> blocks = new ArrayList<>();
 
-    public OpenBlocksCode(HashMap<String, ParseBlockTask> code_templates) {
-        this.code_templates = code_templates;
+    public OpenBlocksCode(String block_collection_name) {
+        this.block_collection_name = block_collection_name;
     }
 
-    public OpenBlocksCode(HashMap<String, ParseBlockTask> code_templates, ArrayList<BlockCode> blocks) {
-        this.code_templates = code_templates;
+    public OpenBlocksCode(String block_collection_name, ArrayList<BlockCode> blocks) {
+        this.block_collection_name = block_collection_name;
         this.blocks = blocks;
     }
 }
