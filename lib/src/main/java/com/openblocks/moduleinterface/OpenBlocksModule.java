@@ -13,12 +13,14 @@ import com.openblocks.moduleinterface.exceptions.ParseException;
 import com.openblocks.moduleinterface.models.OpenBlocksFile;
 import com.openblocks.moduleinterface.models.OpenBlocksProjectMetadata;
 import com.openblocks.moduleinterface.models.OpenBlocksRawProject;
+import com.openblocks.moduleinterface.models.code.ParseBlockTask;
 import com.openblocks.moduleinterface.models.compiler.IncludedBinary;
 import com.openblocks.moduleinterface.models.config.OpenBlocksConfig;
 import com.openblocks.moduleinterface.projectfiles.OpenBlocksCode;
 import com.openblocks.moduleinterface.projectfiles.OpenBlocksLayout;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface OpenBlocksModule {
 
@@ -266,8 +268,9 @@ public interface OpenBlocksModule {
          * This function initializes the compiler module with included
          * essential build tools' binaries like aapt, aapt2, and zipalign
          * @param includedBinaries A list of binaries included within the app
+         * @param blocks A HashMap of opcode and ParseBlockTask, used to parse blocks into java code by the compiler
          */
-        void initializeCompiler(ArrayList<IncludedBinary> includedBinaries);
+        void initializeCompiler(ArrayList<IncludedBinary> includedBinaries, HashMap<String, ParseBlockTask> blocks);
 
         /**
          * This function is used to compile the code and the layout into an APK file at the specified
