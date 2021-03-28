@@ -210,7 +210,7 @@ public interface OpenBlocksModule {
          * @param layout_data The layout data to be displayed
          * @param saveCallback The callback everytime this has to be saved
          */
-        void show(Context context, View layout, OpenBlocksCode code_data, OpenBlocksLayout layout_data, SaveCallback<OpenBlocksLayout> saveCallback);
+        void show(Context context, View layout, OpenBlocksCode code_data, OpenBlocksLayout layout_data, OpenBlocksProjectMetadata metadata, SaveCallback<OpenBlocksLayout> saveCallback);
 
         /**
          * This function is used to initialize a new layout
@@ -234,7 +234,7 @@ public interface OpenBlocksModule {
          * @param layout_data The layout of this project, used for reference
          * @param saveCallback The callback everytime this has to be saved
          */
-        void show(Context context, View layout, OpenBlocksCode code_data, OpenBlocksLayout layout_data, SaveCallback<OpenBlocksCode> saveCallback);
+        void show(Context context, View layout, OpenBlocksCode code_data, OpenBlocksLayout layout_data, OpenBlocksProjectMetadata metadata, SaveCallback<OpenBlocksCode> saveCallback);
     }
 
     /**
