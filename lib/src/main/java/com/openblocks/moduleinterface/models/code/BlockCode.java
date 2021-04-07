@@ -13,10 +13,12 @@ import java.util.ArrayList;
  */
 public class BlockCode {
     public String opcode;
+    public int color;
     public ArrayList<String> parameters;
 
-    public BlockCode(String opcode, ArrayList<String> parameters) {
+    public BlockCode(String opcode, int color, ArrayList<String> parameters) {
         this.opcode = opcode;
+        this.color = color;
         this.parameters = parameters;
     }
 }

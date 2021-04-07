@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class BlockCodeNest extends BlockCode {
     public ArrayList<BlockCode> blocks;
 
-    public BlockCodeNest(String opcode, ArrayList<String> parameters, ArrayList<BlockCode> blocks) {
-        super(opcode, parameters);
+    public BlockCodeNest(String opcode, int color, ArrayList<String> parameters, ArrayList<BlockCode> blocks) {
+        super(opcode, color, parameters);
         this.blocks = blocks;
     }
 }
