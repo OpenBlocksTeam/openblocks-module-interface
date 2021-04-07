@@ -7,5 +7,5 @@ import java.util.ArrayList;
  * opcode into java code
  */
 public interface ParseBlockTask {
-    void parseBlock(String code, ArrayList<String> arguments);
+    void parseBlock(StringBuilder code, ArrayList<String> arguments);
 }
