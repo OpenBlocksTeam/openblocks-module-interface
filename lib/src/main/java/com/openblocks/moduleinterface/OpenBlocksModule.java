@@ -252,7 +252,7 @@ public interface OpenBlocksModule {
 
         /**
          * This function is used to fetch blocks that will be used and displayed using the {@link ProjectCodeGUI}
-         * @return Simply put, this: Object[Object[String opcode, String format, ParseBlockTask]]
+         * @return Simply put, this: Object[Object[Class block_type, int color, String opcode, String format, ParseBlockTask]]
          */
         Object[] getBlocks();
     }
