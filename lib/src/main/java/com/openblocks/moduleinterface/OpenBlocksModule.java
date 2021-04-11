@@ -15,6 +15,7 @@ import com.openblocks.moduleinterface.models.OpenBlocksFile;
 import com.openblocks.moduleinterface.models.OpenBlocksProjectMetadata;
 import com.openblocks.moduleinterface.models.OpenBlocksRawProject;
 import com.openblocks.moduleinterface.models.code.ParseBlockTask;
+import com.openblocks.moduleinterface.models.code.BlockCode;
 import com.openblocks.moduleinterface.models.compiler.IncludedBinary;
 import com.openblocks.moduleinterface.models.config.OpenBlocksConfig;
 import com.openblocks.moduleinterface.projectfiles.OpenBlocksCode;
@@ -246,9 +247,10 @@ public interface OpenBlocksModule {
 
         /**
          * This function is used to initialize a new OpenBlocks code
+         * @param blocks A hashmap of "String: opcode, BlockCode: block" parsed from {@link #getBlocks()}
          * @return An initialized {@link OpenBlocksCode}
          */
-        OpenBlocksCode initializeNewCode();
+        OpenBlocksCode initializeNewCode(HashMap<String, BlockCode> blocks);
 
         /**
          * This function is used to fetch blocks that will be used and displayed using the {@link ProjectCodeGUI}
