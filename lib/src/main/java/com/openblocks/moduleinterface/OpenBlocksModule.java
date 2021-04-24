@@ -1,7 +1,6 @@
 package com.openblocks.moduleinterface;
 
 import android.content.Context;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -247,10 +246,10 @@ public interface OpenBlocksModule {
 
         /**
          * This function is used to initialize a new OpenBlocks code
-         * @param blocks A hashmap of "String: opcode, BlockCode: block" parsed from {@link #getBlocks()}
+         * @param blocks A list of blocks parsed from {@link #getBlocks()}
          * @return An initialized {@link OpenBlocksCode}
          */
-        OpenBlocksCode initializeNewCode(HashMap<String, BlockCode> blocks);
+        OpenBlocksCode initializeNewCode(ArrayList<BlockCode> blocks);
 
         /**
          * This function is used to fetch blocks that will be used and displayed using the {@link ProjectCodeGUI}
