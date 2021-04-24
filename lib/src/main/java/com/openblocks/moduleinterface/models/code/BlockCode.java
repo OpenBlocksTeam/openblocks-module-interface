@@ -3,22 +3,20 @@ package com.openblocks.moduleinterface.models.code;
 import java.util.ArrayList;
 
 /**
- * This class is used to store a block of operation
- *
- * opcode a key of {@link com.openblocks.moduleinterface.projectfiles.OpenBlocksCode#code_templates}
- * that will give you the format of the code that should be written.
- *
- * parameters are the string that should be formatted to the value / format of that opcode key in
- * {@link com.openblocks.moduleinterface.projectfiles.OpenBlocksCode#code_templates}
+ * This class is used to store the properties of a block
  */
 public class BlockCode {
     public String opcode;
+    public String format;
     public int color;
+    public ParseBlockTask parseBlockTask;
     public ArrayList<String> parameters;
 
-    public BlockCode(String opcode, int color, ArrayList<String> parameters) {
+    public BlockCode(String opcode, String format, int color, ParseBlockTask parseBlockTask, ArrayList<String> parameters) {
         this.opcode = opcode;
+        this.format = format;
         this.color = color;
+        this.parseBlockTask = parseBlockTask;
         this.parameters = parameters;
     }
 }
