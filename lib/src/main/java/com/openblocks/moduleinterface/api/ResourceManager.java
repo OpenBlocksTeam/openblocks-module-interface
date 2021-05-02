@@ -5,7 +5,7 @@ import android.view.View;
 
 import com.openblocks.moduleinterface.OpenBlocksModule;
 
-interface ResourceManager {
+public interface ResourceManager {
     /**
      * This function gets a in image resource for the specified module
      * @param module The module that is using this function
